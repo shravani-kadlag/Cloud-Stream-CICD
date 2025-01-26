@@ -1,23 +1,20 @@
-# Use a Python 3.9 base image
 FROM python:3.9
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements.txt file
-COPY requirements.txt . 
+# Copy the requirements.txt into the container
+COPY requirements.txt .
 
-# Upgrade pip to the latest version
-RUN python -m pip install --upgrade pip
-
-# Install dependencies from requirements.txt
+# Install dependencies
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the rest of the application files
+# Copy the rest of your application
 COPY . .
 
-# Expose the required port (replace 5000 with your app's port)
+# Expose the port your app will run on
 EXPOSE 8000
 
-# Command to run your application (replace with your app's entry point)
-CMD ["python", "todos/app.py"]
+# Command to run your app (e.g., for Django)
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
