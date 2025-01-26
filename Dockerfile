@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8000
 
 # Command to run your application (replace with your app's entry point)
-CMD ["python", "todos/migrations/template/apps.py"]
+CMD ["python", "todos/app.py"]
