@@ -1,10 +1,5 @@
 blinker
-click==8.1.8
 colorama==0.4.6
-Flask
 itsdangerous==2.2.0
-Jinja2==3.1.5
-MarkupSafe==3.0.2
 setuptools==75.8.0
-Werkzeug==3.1.3
-Django>=5.1.5
+Django==4.2  # Change to a stable version
