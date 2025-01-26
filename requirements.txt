@@ -2,4 +2,4 @@ blinker
 colorama==0.4.6
 itsdangerous==2.2.0
 setuptools==75.8.0
-Django==4.2  # Change to a stable version
+Django  # Change to a stable version
