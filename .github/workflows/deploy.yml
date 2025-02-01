@@ -29,11 +29,16 @@ jobs:
       - name: Collect static files
         run: python manage.py collectstatic --noinput
 
+      - name: Verify host and add to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+
       - name: Deploy to localhost
         env:
-          SERVER_IP: "127.0.0.1"  # Localhost IP
+          SERVER_IP: "127.0.0.1"  # Localhost IP or your server's IP
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          USER: "Ubuntu"  # Replace with your actual local username
+          USER: "ubuntu"  # Your local SSH username
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -i private_key -r . $USER@$SERVER_IP:/home/ubuntu/OneDrive/Documents/cloud\ CICD
+          scp -i private_key -r . $USER@$SERVER_IP:/path/to/your/project
