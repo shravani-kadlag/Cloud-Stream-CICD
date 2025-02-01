@@ -63,4 +63,4 @@ jobs:
           USER: "ubuntu"  # Your local SSH username
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -i private_key -r . $USER@$SERVER_IP:/path/to/your/project
+          scp -o StrictHostKeyChecking=no -i private_key -r . $USER@$SERVER_IP:/path/to/your/project
