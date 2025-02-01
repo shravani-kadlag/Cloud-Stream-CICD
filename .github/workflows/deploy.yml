@@ -29,11 +29,11 @@ jobs:
       - name: Collect static files
         run: python manage.py collectstatic --noinput
 
-      - name: Deploy (Example: SSH to server)
+      - name: Deploy to localhost
         env:
-          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_IP: "127.0.0.1"  # Localhost IP
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          USER: ${{ secrets.USER }}
+          USER: "Ubuntu"  # Replace with your actual local username
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -i private_key -r . $USER@$SERVER_IP:/path/to/your/project
+          scp -i private_key -r . $USER@$SERVER_IP:/home/ubuntu/OneDrive/Documents/cloud\ CICD
